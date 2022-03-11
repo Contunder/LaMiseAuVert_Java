@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+package View;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,6 +10,10 @@ import javax.swing.JTextField;
 
 public class EditPension extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField fieldAdresse;
 	private JTextField fieldResponsable;
@@ -22,7 +26,7 @@ public class EditPension extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditPension frame = new EditPension();
+					EditPension frame = new EditPension(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +38,7 @@ public class EditPension extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditPension() {
+	public EditPension(Modele.Pension pension) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -46,7 +50,7 @@ public class EditPension extends JFrame {
 		labelName.setBounds(170, 6, 112, 16);
 		contentPane.add(labelName);
 		
-		JLabel labelPen = new JLabel("Pension de ");
+		JLabel labelPen = new JLabel("Pension de " + pension.getVille());
 		labelPen.setBounds(146, 34, 179, 16);
 		contentPane.add(labelPen);
 		
@@ -58,11 +62,11 @@ public class EditPension extends JFrame {
 		labelAdresse.setBounds(21, 125, 89, 16);
 		contentPane.add(labelAdresse);
 		
-		JLabel labelResponsable = new JLabel("RÃ©sponsable :");
+		JLabel labelResponsable = new JLabel("Résponsable :");
 		labelResponsable.setBounds(21, 153, 89, 16);
 		contentPane.add(labelResponsable);
 		
-		JLabel labelTel = new JLabel("TÃ©lÃ¨phone :");
+		JLabel labelTel = new JLabel("Télèphone :");
 		labelTel.setBounds(21, 181, 89, 16);
 		contentPane.add(labelTel);
 		
@@ -71,20 +75,24 @@ public class EditPension extends JFrame {
 		contentPane.add(labelImage);
 		
 		JTextArea textDescription = new JTextArea();
+		textDescription.setText(pension.getDescription());
 		textDescription.setBounds(122, 63, 298, 44);
 		contentPane.add(textDescription);
 		
 		fieldAdresse = new JTextField();
+		fieldAdresse.setText(pension.getAdresse());
 		fieldAdresse.setBounds(122, 120, 298, 26);
 		contentPane.add(fieldAdresse);
 		fieldAdresse.setColumns(10);
 		
 		fieldResponsable = new JTextField();
+		fieldResponsable.setText(pension.getResponsable());
 		fieldResponsable.setBounds(122, 150, 298, 21);
 		contentPane.add(fieldResponsable);
 		fieldResponsable.setColumns(10);
 		
 		fieldTel = new JTextField();
+		fieldTel.setText(pension.getTelephone());
 		fieldTel.setBounds(122, 176, 298, 26);
 		contentPane.add(fieldTel);
 		fieldTel.setColumns(10);

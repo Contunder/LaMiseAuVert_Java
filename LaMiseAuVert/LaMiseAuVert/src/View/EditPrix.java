@@ -1,15 +1,23 @@
-import java.awt.BorderLayout;
+package View;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Modele.Prix;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class EditPrix extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField fieldCCanin;
 	private JTextField fieldPFeline;
@@ -22,7 +30,7 @@ public class EditPrix extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditPrix frame = new EditPrix();
+					EditPrix frame = new EditPrix(null, null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +42,7 @@ public class EditPrix extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditPrix() {
+	public EditPrix(Prix prixHotel, Prix prixCamping, Prix prixPension) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -50,7 +58,7 @@ public class EditPrix extends JFrame {
 		labelPen.setBounds(144, 34, 179, 16);
 		contentPane.add(labelPen);
 		
-		JLabel labelPFeline = new JLabel("Prix Pension FÃ©line :");
+		JLabel labelPFeline = new JLabel("Prix Pension Féline :");
 		labelPFeline.setBounds(32, 73, 132, 16);
 		contentPane.add(labelPFeline);
 		
@@ -58,21 +66,24 @@ public class EditPrix extends JFrame {
 		labelCCanin.setBounds(32, 101, 132, 16);
 		contentPane.add(labelCCanin);
 		
-		JLabel labelHCanin = new JLabel("Prix Hotel Canin :");
+		JLabel labelHCanin = new JLabel("Prix Hôtel Canin :");
 		labelHCanin.setBounds(32, 129, 132, 16);
 		contentPane.add(labelHCanin);
 		
 		fieldPFeline = new JTextField();
+		fieldPFeline.setText(String.valueOf(prixPension.getTarif()));
 		fieldPFeline.setBounds(272, 68, 132, 26);
 		contentPane.add(fieldPFeline);
 		fieldPFeline.setColumns(10);
 		
 		fieldCCanin = new JTextField();
+		fieldCCanin.setText(String.valueOf(prixCamping.getTarif()));
 		fieldCCanin.setBounds(272, 96, 132, 26);
 		contentPane.add(fieldCCanin);
 		fieldCCanin.setColumns(10);
 		
 		fieldHCanin = new JTextField();
+		fieldHCanin.setText(String.valueOf(prixHotel.getTarif()));
 		fieldHCanin.setBounds(272, 124, 132, 26);
 		contentPane.add(fieldHCanin);
 		fieldHCanin.setColumns(10);
