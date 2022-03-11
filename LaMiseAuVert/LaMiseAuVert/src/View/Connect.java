@@ -107,10 +107,21 @@ public class Connect extends JFrame {
 					String hashed_password = Crypt.encryptThisString(pass);
 					UtilisateurDAO utilisateurDAO = new UtilisateurDAO(url, dbName, userName, password);
 					Utilisateur utilisateur = utilisateurDAO.getUtilisateurByPassword(hashed_password);
+					String verifUtilAdmin = "ADMIN";
+					String verifUtilUser = "USER";
 					if(utilisateur.getPassword() != null) {
-						frame.setVisible(false);
-						Pension Pension = new Pension(utilisateur, proprietaire);
-						Pension.setVisible(true);
+						if (utilisateur.toString() == verifUtilAdmin){
+							frame.setVisible(false);
+							Admin Admin = new Admin(utilisateur, proprietaire);
+							Admin.setVisible(true);
+						}else if (utilisateur.toString() == verifUtilUser) {
+							labelError.setText("Erreur : Vous ne pouvez pas vous connecter avec ce compte !");
+							labelError.setVisible(true);
+						}else {
+							frame.setVisible(false);
+							Pension Pension = new Pension(utilisateur, proprietaire);
+							Pension.setVisible(true);
+						}
 					} else {
 						labelError.setText("Erreur : Email ou Mot de Passe invalide !");
 						labelError.setVisible(true);

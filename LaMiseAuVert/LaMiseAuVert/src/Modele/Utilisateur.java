@@ -42,5 +42,9 @@ public class Utilisateur {
 	public void setRole(String role) {
 		Role = role;
 	}
+	
+	public String toString() {
+		return this.Role;
+	}
 
 }
