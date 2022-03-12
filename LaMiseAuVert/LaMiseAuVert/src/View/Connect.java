@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.Crypt;
+import Controller.DBConnect;
 import DAO.ProprietaireDAO;
 import DAO.UtilisateurDAO;
 
@@ -52,13 +53,13 @@ public class Connect extends JFrame {
 	 */
 	public Connect() {
 		
-		String url="jdbc:mysql://127.0.0.1:8889/";
-		String dbName = "lamiseauvert";
-		String userName = "valentin";
-		String password = "kilabilon";
+		String url= DBConnect.getUrl();
+		String dbName = DBConnect.getDbName();
+		String userName = DBConnect.getUserName();
+		String password = DBConnect.getPassword();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 214);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -83,7 +84,7 @@ public class Connect extends JFrame {
 		
 		JLabel labelError = new JLabel("Erreur");
 		labelError.setForeground(Color.RED);
-		labelError.setBounds(141, 34, 274, 16);
+		labelError.setBounds(28, 33, 387, 16);
 		labelError.setVisible(false);
 		contentPane.add(labelError);
 		

@@ -6,6 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.DBConnect;
+import DAO.PensionDAO;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -29,7 +33,7 @@ public class EditPension extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditPension frame = new EditPension(null, null);
+					EditPension frame = new EditPension(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,9 +45,15 @@ public class EditPension extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditPension(Modele.Pension pension, EditPension editPension) {
+	public EditPension(Modele.Pension pension) {
+		
+		String url= DBConnect.getUrl();
+		String dbName = DBConnect.getDbName();
+		String userName = DBConnect.getUserName();
+		String password = DBConnect.getPassword();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 465, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -117,11 +127,17 @@ public class EditPension extends JFrame {
 		btnEdit.setBounds(327, 237, 117, 29);
 		contentPane.add(btnEdit);
 		btnEdit.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String paramDescription = textDescription.getText();
+				String paramAdresse = fieldAdresse.getText();
+				String paramResponsable = fieldResponsable.getText();
+				String paramTelephone = fieldTel.getText();
+				String paramVille = pension.getVille();
 				
-				
+				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
+				String retour = pensionDAO.editPensionByVille(paramDescription, paramAdresse, paramResponsable, paramTelephone, paramVille);
+				labelPen.setText(retour);
 			}
 			
 		});
@@ -133,7 +149,7 @@ public class EditPension extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				editPension.setVisible(false);
+				
 			}
 			
 		});

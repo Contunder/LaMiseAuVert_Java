@@ -42,7 +42,7 @@ public class PensionDAO {
 					pension.setImage(ResultSet.getString("Image"));
 				}
 				 return pension;
-			}else {
+			} else {
 				return null;
 			}
 			
@@ -53,6 +53,28 @@ public class PensionDAO {
 		}
 		return null;
 		
+	}
+	
+	public String editPensionByVille(String paramDescription, String paramAdresse, String paramResponsable, String paramTelephone, String paramVille) {
+		try {
+			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
+			
+			if (paramVille != null) {
+				String requete = "CALL updatePension('" + paramDescription + "' , '" + paramAdresse + "' , '" + paramResponsable + "' ,"
+						+ "'" + paramTelephone + "' , '" + paramVille + "' )";
+				Statement stmt = (Statement) conn.createStatement();
+				stmt.executeQuery(requete);
+				
+				return "Pension modifier";
+			} else {
+				return "Une erreur c'est produite";
+			}
+		} catch(Exception sqle) {
+			sqle.printStackTrace();
+			System.out.println("Erreur");
+			System.exit(0);
+		}
+		return "Une erreur c'est produite";
 	}
 
 }

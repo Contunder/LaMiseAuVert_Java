@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controller.DBConnect;
 import DAO.PensionDAO;
 import DAO.PrixDAO;
 import Modele.Proprietaire;
@@ -47,10 +48,10 @@ public class Pension extends JFrame {
 	 */
 	public Pension(Utilisateur utilisateur, Proprietaire proprietaire) {
 		
-		String url="jdbc:mysql://127.0.0.1:8889/";
-		String dbName = "lamiseauvert";
-		String userName = "valentin";
-		String password = "kilabilon";
+		String url= DBConnect.getUrl();
+		String dbName = DBConnect.getDbName();
+		String userName = DBConnect.getUserName();
+		String password = DBConnect.getPassword();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -71,7 +72,7 @@ public class Pension extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
 				Modele.Pension pension = pensionDAO.getPensionByVille(utilisateur.getRole());
-				EditPension EditPension = new EditPension(pension, EditPension);
+				EditPension EditPension = new EditPension(pension);
 				EditPension.setVisible(true);
 			}
 			
