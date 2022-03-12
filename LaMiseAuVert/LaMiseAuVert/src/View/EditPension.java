@@ -1,5 +1,7 @@
 package View;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class EditPension extends JFrame {
 
@@ -26,7 +29,7 @@ public class EditPension extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditPension frame = new EditPension(null);
+					EditPension frame = new EditPension(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +41,7 @@ public class EditPension extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditPension(Modele.Pension pension) {
+	public EditPension(Modele.Pension pension, EditPension editPension) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -62,11 +65,11 @@ public class EditPension extends JFrame {
 		labelAdresse.setBounds(21, 125, 89, 16);
 		contentPane.add(labelAdresse);
 		
-		JLabel labelResponsable = new JLabel("Résponsable :");
+		JLabel labelResponsable = new JLabel("Responsable :");
 		labelResponsable.setBounds(21, 153, 89, 16);
 		contentPane.add(labelResponsable);
 		
-		JLabel labelTel = new JLabel("Télèphone :");
+		JLabel labelTel = new JLabel("Telephone :");
 		labelTel.setBounds(21, 181, 89, 16);
 		contentPane.add(labelTel);
 		
@@ -96,5 +99,43 @@ public class EditPension extends JFrame {
 		fieldTel.setBounds(122, 176, 298, 26);
 		contentPane.add(fieldTel);
 		fieldTel.setColumns(10);
+		
+		JButton btnFile = new JButton("Choisir une Image");
+		btnFile.setBounds(122, 204, 160, 29);
+		contentPane.add(btnFile);
+		btnFile.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+			
+		});
+		
+		JButton btnEdit = new JButton("Modifier");
+		btnEdit.setBounds(327, 237, 117, 29);
+		contentPane.add(btnEdit);
+		btnEdit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+			
+		});
+		
+		JButton btnAnnul = new JButton("Annuler");
+		btnAnnul.setBounds(208, 237, 117, 29);
+		contentPane.add(btnAnnul);
+		btnAnnul.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				editPension.setVisible(false);
+			}
+			
+		});
 	}
 }

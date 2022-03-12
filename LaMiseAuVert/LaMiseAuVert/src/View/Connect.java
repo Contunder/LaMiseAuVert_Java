@@ -52,9 +52,9 @@ public class Connect extends JFrame {
 	 */
 	public Connect() {
 		
-		String url="jdbc:mysql://127.0.0.1/";
+		String url="jdbc:mysql://127.0.0.1:8889/";
 		String dbName = "lamiseauvert";
-		String userName = "Valentin";
+		String userName = "valentin";
 		String password = "kilabilon";
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,15 +106,16 @@ public class Connect extends JFrame {
 				if(proprietaire.getEmail() != null) {
 					String hashed_password = Crypt.encryptThisString(pass);
 					UtilisateurDAO utilisateurDAO = new UtilisateurDAO(url, dbName, userName, password);
-					Utilisateur utilisateur = utilisateurDAO.getUtilisateurByPassword(hashed_password);
-					String verifUtilAdmin = "ADMIN";
-					String verifUtilUser = "USER";
+					Utilisateur utilisateur = utilisateurDAO.getUtilisateurByPassword(hashed_password, proprietaire.getId());
+					String verifUtilAdmin =  new String("ADMIN");
+					String verifUtilUser = new String("USER");
 					if(utilisateur.getPassword() != null) {
-						if (utilisateur.toString() == verifUtilAdmin){
+						String Role = new String(utilisateur.getRole());
+						if (Role.equals(verifUtilAdmin)){
 							frame.setVisible(false);
 							Admin Admin = new Admin(utilisateur, proprietaire);
 							Admin.setVisible(true);
-						}else if (utilisateur.toString() == verifUtilUser) {
+						}else if (Role.equals(verifUtilUser)) {
 							labelError.setText("Erreur : Vous ne pouvez pas vous connecter avec ce compte !");
 							labelError.setVisible(true);
 						}else {

@@ -71,13 +71,13 @@ public class UtilisateurDAO {
 		return null;
 	}
 	
-	public Utilisateur getUtilisateurByPassword(String userPassword) {
+	public Utilisateur getUtilisateurByPassword(String userPassword, int proprietaireId) {
 
 		try {
 			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
 			
 			if (userPassword != null) {
-				String requete = "CALL getRoleByPassword('" + userPassword + "')";
+				String requete = "CALL getRoleByPassword('" + userPassword + "' , '"+ proprietaireId + "')";
 				Statement stmt = (Statement) conn.createStatement();
 				ResultSet ResultSet = stmt.executeQuery(requete);
 				

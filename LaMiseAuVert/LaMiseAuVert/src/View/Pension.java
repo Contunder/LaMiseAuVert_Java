@@ -47,9 +47,9 @@ public class Pension extends JFrame {
 	 */
 	public Pension(Utilisateur utilisateur, Proprietaire proprietaire) {
 		
-		String url="jdbc:mysql://127.0.0.1/";
+		String url="jdbc:mysql://127.0.0.1:8889/";
 		String dbName = "lamiseauvert";
-		String userName = "Valentin";
+		String userName = "valentin";
 		String password = "kilabilon";
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +71,7 @@ public class Pension extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
 				Modele.Pension pension = pensionDAO.getPensionByVille(utilisateur.getRole());
-				EditPension EditPension = new EditPension(pension);
+				EditPension EditPension = new EditPension(pension, EditPension);
 				EditPension.setVisible(true);
 			}
 			
@@ -97,7 +97,7 @@ public class Pension extends JFrame {
 		labelPen.setBounds(39, 35, 179, 16);
 		contentPane.add(labelPen);
 		
-		JButton btnCreeCompte = new JButton("Crée un Compte");
+		JButton btnCreeCompte = new JButton("Cree un Compte");
 		btnCreeCompte.setBounds(39, 104, 156, 29);
 		contentPane.add(btnCreeCompte);
 		btnCreeCompte.addActionListener(new ActionListener() {
