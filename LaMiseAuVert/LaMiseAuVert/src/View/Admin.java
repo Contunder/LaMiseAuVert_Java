@@ -80,10 +80,13 @@ public class Admin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PrixDAO prixDAO = new PrixDAO(url, dbName, userName, password);
+				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
+				
+				Modele.Pension pension = pensionDAO.getPensionByVille(utilisateur.getRole());
 				Modele.Prix prixHotel = prixDAO.getPrixByVilleAndLibelle(utilisateur.getRole(), "Hotel Canin");
 				Modele.Prix prixCamping = prixDAO.getPrixByVilleAndLibelle(utilisateur.getRole(), "Camping Canin");
 				Modele.Prix prixPension = prixDAO.getPrixByVilleAndLibelle(utilisateur.getRole(), "Pension Feline");
-				EditPrix EditPrix = new EditPrix(prixHotel, prixCamping, prixPension);
+				EditPrix EditPrix = new EditPrix(prixHotel, prixCamping, prixPension, pension);
 				EditPrix.setVisible(true);
 			}
 			
