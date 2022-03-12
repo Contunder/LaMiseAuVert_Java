@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.DBConnect;
+import DAO.PrixDAO;
+import DAO.TypeGardiennageDAO;
 import Modele.Prix;
 
 import javax.swing.JLabel;
@@ -33,7 +35,7 @@ public class EditPrix extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditPrix frame = new EditPrix(null, null, null);
+					EditPrix frame = new EditPrix(null, null, null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,12 +47,15 @@ public class EditPrix extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditPrix(Prix prixHotel, Prix prixCamping, Prix prixPension) {
+	public EditPrix(Prix prixHotel, Prix prixCamping, Prix prixPension, Modele.Pension pension) {
 		
 		String url= DBConnect.getUrl();
 		String dbName = DBConnect.getDbName();
 		String userName = DBConnect.getUserName();
 		String password = DBConnect.getPassword();
+		
+		PrixDAO prixDAO = new PrixDAO(url, dbName, userName, password);
+		TypeGardiennageDAO typeGardiennageDAO = new TypeGardiennageDAO(url, dbName, userName, password);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -104,9 +109,18 @@ public class EditPrix extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String paramPFeline;
-				String paramCCanin;
-				String paramHCanin;
+				int[] paramTypeGardiennage = typeGardiennageDAO.getAllGardiennage();
+				int[] paramPrix = new int[3];
+				paramPrix[0] = Integer.parseInt(fieldHCanin.getText());
+				paramPrix[1] = Integer.parseInt(fieldCCanin.getText());
+				paramPrix[2] = Integer.parseInt(fieldPFeline.getText());
+				
+				int i = 0;
+		        while (i < 3){
+					String retour = prixDAO.editPrixByPension(paramPrix[i], pension.getId(), paramTypeGardiennage[i]);
+					labelPen.setText(retour);
+		        	i++;
+		        } 
 			}
 			
 		});

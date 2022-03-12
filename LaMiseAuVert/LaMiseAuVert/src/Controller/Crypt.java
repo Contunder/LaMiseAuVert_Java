@@ -10,10 +10,8 @@ public class Crypt {
         try {
            
             MessageDigest md = MessageDigest.getInstance("SHA-512");
-  
             
             byte[] messageDigest = md.digest(input.getBytes());
-  
     
             BigInteger no = new BigInteger(1, messageDigest);
   
@@ -24,7 +22,7 @@ public class Crypt {
             }
   
             return hashtext;
-        }catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }

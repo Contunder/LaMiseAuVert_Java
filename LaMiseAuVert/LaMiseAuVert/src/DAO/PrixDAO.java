@@ -54,4 +54,25 @@ public class PrixDAO {
 		
 	}
 	
+	public String editPrixByPension(int paramTarif, int paramPension, int paramTypeGardiennage) {
+		try {
+			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
+			
+			if (paramPension != 0) {
+				String requete = "CALL updatePrix('" + paramTarif + "' , '" + paramPension + "' , '" + paramTypeGardiennage + "' )";
+				Statement stmt = (Statement) conn.createStatement();
+				stmt.executeQuery(requete);
+				
+				return "Pension modifier";
+			} else {
+				return "Une erreur c'est produite";
+			}
+		} catch(Exception sqle) {
+			sqle.printStackTrace();
+			System.out.println("Erreur");
+			System.exit(0);
+		}
+		return "Une erreur c'est produite";
+	}
+	
 }
