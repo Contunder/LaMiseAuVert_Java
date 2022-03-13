@@ -21,16 +21,16 @@ public class UtilisateurDAO {
 		this.password = paramPassword;
 	}
 	
-	/* public void newUtilisateur(Utilisateur utilisateur) {
+	public void newUtilisateur(int paramProprietaire, String paramPass, String paramRole) {
 		try {
 			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
 			
-			if (utilisateur.getProprietaireId() != 0) {
-				
-			}else {
-				String requete = "CALL getUtilisateur(" + utilisateur.getProprietaireId() + ")";
+			if (paramProprietaire != 0) {
+				String requete = "CALL addUser('" + paramProprietaire + "' , '" + paramPass + "' , '" + paramRole + "')";
 				Statement stmt = (Statement) conn.createStatement();
-				ResultSet recordset = stmt.executeQuery(requete);
+				stmt.executeQuery(requete);
+			}else {
+			
 			}
 			
 		} catch(Exception sqle) {
@@ -38,7 +38,7 @@ public class UtilisateurDAO {
 			System.out.println("Erreur");
 			System.exit(0);
 		}
-	} */
+	}
 	
 	public Utilisateur getUtilisateurByProprietaireId(int Id) {
 		try {

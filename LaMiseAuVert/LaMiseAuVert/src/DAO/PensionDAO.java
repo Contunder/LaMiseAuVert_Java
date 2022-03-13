@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import Modele.Pension;
 
@@ -45,6 +48,32 @@ public class PensionDAO {
 			} else {
 				return null;
 			}
+			
+		} catch(Exception sqle) {
+			sqle.printStackTrace();
+			System.out.println("Erreur");
+			System.exit(0);
+		}
+		return null;
+		
+	}
+	
+	public List<String> getAllPension() {
+		try {
+			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
+			
+				String requete = "CALL getAllPension()";
+				Statement stmt = (Statement) conn.createStatement();
+				ResultSet ResultSet = stmt.executeQuery(requete);
+				
+				//Pension pension[] = new Pension();
+				
+				List<String> pension = new ArrayList<String>();
+				
+				while (ResultSet.next()) {
+					pension.add(ResultSet.getString("Ville"));
+				}
+				 return pension;
 			
 		} catch(Exception sqle) {
 			sqle.printStackTrace();

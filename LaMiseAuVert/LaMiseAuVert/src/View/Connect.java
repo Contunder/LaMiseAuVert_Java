@@ -81,6 +81,7 @@ public class Connect extends JFrame {
 		fieldEmail.setBounds(141, 51, 274, 26);
 		contentPane.add(fieldEmail);
 		fieldEmail.setColumns(10);
+		fieldEmail.setText("valentin.denavaut@hotmail.fr");
 		
 		JLabel labelError = new JLabel("Erreur");
 		labelError.setForeground(Color.RED);

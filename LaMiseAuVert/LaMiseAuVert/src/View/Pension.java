@@ -107,7 +107,7 @@ public class Pension extends JFrame {
 		btnCreeCompte.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AddCompte AddCompte = new AddCompte();
+				AddCompte AddCompte = new AddCompte(utilisateur);
 				AddCompte.setVisible(true);
 			}
 			

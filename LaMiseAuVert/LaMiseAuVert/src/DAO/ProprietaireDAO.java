@@ -21,24 +21,24 @@ public class ProprietaireDAO {
 		this.password = paramPassword;
 	}
 	
-	/*public void newProprietaire(Proprietaire proprietaire) {
+	public void newProprietaire(String paramNom, String paramPrenom, String paramAdresse, String paramTelephone, String paramEmail) {
 		try {
 			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
 			
-			if (proprietaire.getEmail() != null) {
-				
-			}else {
-				String requete = "CALL getUtilisateur(" + proprietaire.getEmail() + ")";
+			if (paramEmail != null) {
+				String requete = "CALL getUtilisateur('" + paramNom + "' , '" + paramPrenom + "' , '" + paramAdresse + "' ,"
+						+ " '" + paramTelephone + "' , '" + paramEmail + "' )";
 				Statement stmt = (Statement) conn.createStatement();
-				ResultSet recordset = stmt.executeQuery(requete);
+				stmt.executeQuery(requete);
+			} else {
+				
 			}
-			
 		} catch(Exception sqle) {
 			sqle.printStackTrace();
 			System.out.println("Erreur");
 			System.exit(0);
 		}
-	}*/
+	}
 	
 	public Proprietaire getProprietaireByEmail(String Email) {
 		try {
