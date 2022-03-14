@@ -17,6 +17,7 @@ import Modele.Proprietaire;
 import Modele.Utilisateur;
 
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class Pension extends JFrame {
@@ -60,6 +61,9 @@ public class Pension extends JFrame {
 		setBounds(100, 100, 450, 300);
 		setVisible(true);
 		setTitle("La Mise Au Vert - Compte Pension");
+		java.net.URL iconURL = getClass().getResource("/images/icon.png");
+		ImageIcon icon = new ImageIcon(iconURL);
+		setIconImage(icon.getImage());
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

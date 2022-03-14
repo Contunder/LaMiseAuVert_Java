@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class AddCompte extends JFrame {
@@ -71,6 +72,9 @@ public class AddCompte extends JFrame {
 		setBounds(100, 100, 450, 341);
 		setVisible(true);
 		setTitle("La Mise Au Vert - Cree un Compte");
+		java.net.URL iconURL = getClass().getResource("/images/icon.png");
+		ImageIcon icon = new ImageIcon(iconURL);
+		setIconImage(icon.getImage());
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -181,7 +185,7 @@ public class AddCompte extends JFrame {
 					utilisateurDAO.newUtilisateur(proprietaire.getId(), hashed_password, Role);
 					labelCreateCompte.setText("Utilisateur Cree");
 				} else {
-					labelCreateCompte.setText("Le mail existe déjà");
+					labelCreateCompte.setText("Le mail existe dï¿½jï¿½");
 				}
 			}
 			

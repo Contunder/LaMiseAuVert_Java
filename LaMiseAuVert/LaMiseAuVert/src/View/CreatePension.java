@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -58,6 +59,9 @@ public class CreatePension extends JFrame {
 		setBounds(100, 100, 465, 320);
 		setVisible(true);
 		setTitle("La Mise Au Vert - Cree une Pension");
+		java.net.URL iconURL = getClass().getResource("/images/icon.png");
+		ImageIcon icon = new ImageIcon(iconURL);
+		setIconImage(icon.getImage());
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.tools.Tool;
 
 import Controller.Crypt;
 import Controller.DBConnect;
@@ -17,6 +18,7 @@ import Modele.Utilisateur;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JPasswordField;
@@ -61,6 +63,9 @@ public class Connect extends JFrame {
 		setBounds(100, 100, 450, 214);
 		setVisible(true);
 		setTitle("La Mise Au Vert - Connexion");
+		java.net.URL iconURL = getClass().getResource("/images/icon.png");
+		ImageIcon icon = new ImageIcon(iconURL);
+		setIconImage(icon.getImage());
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

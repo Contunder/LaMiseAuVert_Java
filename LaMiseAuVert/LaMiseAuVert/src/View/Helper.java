@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
@@ -45,6 +46,9 @@ public class Helper extends JFrame {
 		setBounds(100, 100, 535, 285);
 		setVisible(true);
 		setTitle("La Mise Au Vert - Aide");
+		java.net.URL iconURL = getClass().getResource("/images/icon.png");
+		ImageIcon icon = new ImageIcon(iconURL);
+		setIconImage(icon.getImage());
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -87,7 +91,7 @@ public class Helper extends JFrame {
 		labelInfoClient.setBounds(10, 174, 77, 14);
 		contentPane.add(labelInfoClient);
 		
-		JLabel labelHelpEditPension = new JLabel("Tout les champs doivent être remplie sauf l'image");
+		JLabel labelHelpEditPension = new JLabel("Tout les champs doivent ï¿½tre remplie sauf l'image");
 		labelHelpEditPension.setVerticalAlignment(SwingConstants.TOP);
 		labelHelpEditPension.setBounds(148, 36, 361, 14);
 		contentPane.add(labelHelpEditPension);
@@ -97,11 +101,11 @@ public class Helper extends JFrame {
 		labelHelpEditPension2.setBounds(148, 49, 361, 14);
 		contentPane.add(labelHelpEditPension2);
 		
-		JLabel labelHelpEditPrix = new JLabel("Tout les champs doivent être remplie.");
+		JLabel labelHelpEditPrix = new JLabel("Tout les champs doivent ï¿½tre remplie.");
 		labelHelpEditPrix.setBounds(148, 74, 361, 14);
 		contentPane.add(labelHelpEditPrix);
 		
-		JLabel labelHelpCreePension = new JLabel("Tout les champs doivent être remplie sauf l'image");
+		JLabel labelHelpCreePension = new JLabel("Tout les champs doivent ï¿½tre remplie sauf l'image");
 		labelHelpCreePension.setBounds(148, 99, 361, 14);
 		contentPane.add(labelHelpCreePension);
 		

@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -62,6 +63,9 @@ public class Admin extends JFrame {
 		setBounds(100, 100, 450, 300);
 		setVisible(true);
 		setTitle("La Mise Au Vert - Compte Administrateur");
+		java.net.URL iconURL = getClass().getResource("/images/icon.png");
+		ImageIcon icon = new ImageIcon(iconURL);
+		setIconImage(icon.getImage());
 		
 		labelSelectPension = new JPanel();
 		labelSelectPension.setBorder(new EmptyBorder(5, 5, 5, 5));
