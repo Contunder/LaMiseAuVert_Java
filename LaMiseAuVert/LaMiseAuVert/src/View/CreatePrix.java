@@ -4,20 +4,18 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Controller.DBConnect;
 import DAO.PrixDAO;
 import DAO.TypeGardiennageDAO;
-import Modele.Prix;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-
-public class EditPrix extends JFrame {
+public class CreatePrix extends JFrame {
 
 	/**
 	 * 
@@ -35,7 +33,7 @@ public class EditPrix extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EditPrix frame = new EditPrix(null, null, null, null);
+					CreatePrix frame = new CreatePrix(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +45,7 @@ public class EditPrix extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditPrix(Prix prixHotel, Prix prixCamping, Prix prixPension, Modele.Pension pension) {
+	public CreatePrix(Modele.Pension pension) {
 		
 		String url= DBConnect.getUrl();
 		String dbName = DBConnect.getDbName();
@@ -85,24 +83,21 @@ public class EditPrix extends JFrame {
 		contentPane.add(labelHCanin);
 		
 		fieldPFeline = new JTextField();
-		fieldPFeline.setText(String.valueOf(prixPension.getTarif()));
 		fieldPFeline.setBounds(272, 68, 132, 26);
 		contentPane.add(fieldPFeline);
 		fieldPFeline.setColumns(10);
 		
 		fieldCCanin = new JTextField();
-		fieldCCanin.setText(String.valueOf(prixCamping.getTarif()));
 		fieldCCanin.setBounds(272, 96, 132, 26);
 		contentPane.add(fieldCCanin);
 		fieldCCanin.setColumns(10);
 		
 		fieldHCanin = new JTextField();
-		fieldHCanin.setText(String.valueOf(prixHotel.getTarif()));
 		fieldHCanin.setBounds(272, 124, 132, 26);
 		contentPane.add(fieldHCanin);
 		fieldHCanin.setColumns(10);
 		
-		JButton btnEdit = new JButton("Modifier les Prix");
+		JButton btnEdit = new JButton("Cree");
 		btnEdit.setBounds(296, 181, 132, 29);
 		contentPane.add(btnEdit);
 		btnEdit.addActionListener(new ActionListener() {
@@ -117,7 +112,7 @@ public class EditPrix extends JFrame {
 				
 				int i = 0;
 		        while (i < 3){
-					String retour = prixDAO.editPrixByPension(paramPrix[i], pension.getId(), paramTypeGardiennage[i]);
+					String retour = prixDAO.createPrixByPension(paramPrix[i], pension.getId(), paramTypeGardiennage[i]);
 					labelPen.setText(retour);
 		        	i++;
 		        } 

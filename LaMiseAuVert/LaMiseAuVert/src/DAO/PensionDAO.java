@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import Modele.Pension;
@@ -97,6 +96,33 @@ public class PensionDAO {
 				return "Pension modifier";
 			} else {
 				return "Une erreur c'est produite";
+			}
+		} catch(Exception sqle) {
+			sqle.printStackTrace();
+			System.out.println("Erreur");
+			System.exit(0);
+		}
+		return "Une erreur c'est produite";
+	}
+	
+	public String createPensionByVille(String paramVille, String paramDescription, String paramAdresse, String paramResponsable, String paramTelephone, String paramImage) {
+		try {
+			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
+			
+			if (paramImage != null) {
+				String requete = "CALL addPension('" + paramVille + "' , '" + paramDescription + "' , '" + paramAdresse + "' , '" + paramResponsable + "' ,"
+						+ "'" + paramTelephone + "' , '" + paramImage + "' )";
+				Statement stmt = (Statement) conn.createStatement();
+				stmt.executeQuery(requete);
+				
+				return "Pension modifier";
+			} else {
+				paramImage = "assets/uploads/pension/pension-default.jpg";
+				String requete = "CALL addPension('" + paramVille + "' , '" + paramDescription + "' , '" + paramAdresse + "' , '" + paramResponsable + "' ,"
+						+ "'" + paramTelephone + "' , '" + paramImage + "' )";
+				Statement stmt = (Statement) conn.createStatement();
+				stmt.executeQuery(requete);
+				return "Pension modifier";
 			}
 		} catch(Exception sqle) {
 			sqle.printStackTrace();

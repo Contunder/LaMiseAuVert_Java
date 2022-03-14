@@ -3,10 +3,10 @@ package View;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,8 +18,8 @@ import DAO.PensionDAO;
 import DAO.PrixDAO;
 import Modele.Proprietaire;
 import Modele.Utilisateur;
-import javax.swing.JSpinner;
 import javax.swing.JComboBox;
+import java.awt.Font;
 
 public class Admin extends JFrame {
 
@@ -56,6 +56,7 @@ public class Admin extends JFrame {
 		String password = DBConnect.getPassword();
 		
 		PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
+		PrixDAO prixDAO = new PrixDAO(url, dbName, userName, password);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -87,7 +88,6 @@ public class Admin extends JFrame {
 		btnEditPen.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
 				Modele.Pension pension = pensionDAO.getPensionByVille(selectPension.getSelectedItem().toString());
 				EditPension EditPension = new EditPension(pension);
 				EditPension.setVisible(true);
@@ -101,9 +101,6 @@ public class Admin extends JFrame {
 		btnEditPrix.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PrixDAO prixDAO = new PrixDAO(url, dbName, userName, password);
-				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
-				
 				Modele.Pension pension = pensionDAO.getPensionByVille(selectPension.getSelectedItem().toString());
 				Modele.Prix prixHotel = prixDAO.getPrixByVilleAndLibelle(selectPension.getSelectedItem().toString(), "Hotel Canin");
 				Modele.Prix prixCamping = prixDAO.getPrixByVilleAndLibelle(selectPension.getSelectedItem().toString(), "Camping Canin");
@@ -117,10 +114,27 @@ public class Admin extends JFrame {
 		JButton btnCreatePension = new JButton("Cree une Pension");
 		btnCreatePension.setBounds(39, 143, 156, 29);
 		labelSelectPension.add(btnCreatePension);
+		btnCreatePension.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CreatePension createPension = new CreatePension();
+				createPension.setVisible(true);
+			}
+			
+		});
 		
 		JButton btnCreatePrix = new JButton("Cree un Prix");
 		btnCreatePrix.setBounds(243, 143, 156, 29);
 		labelSelectPension.add(btnCreatePrix);
+		btnCreatePrix.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Modele.Pension pension = pensionDAO.getPensionByVille(selectPension.getSelectedItem().toString());
+				CreatePrix CreatePrix = new CreatePrix(pension);
+				CreatePrix.setVisible(true);
+			}
+			
+		});
 		
 		JButton btnCreeCompte = new JButton("Cree un Compte");
 		btnCreeCompte.setBounds(39, 184, 156, 29);
@@ -140,8 +154,8 @@ public class Admin extends JFrame {
 		btnClient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Client Client = new Client();
-				Client.setVisible(true);
+				InfosClient InfosClient = new InfosClient();
+				InfosClient.setVisible(true);
 			}
 			
 		});
@@ -156,5 +170,19 @@ public class Admin extends JFrame {
 			}
 			
 		});
+		
+		JLabel labelHelper = new JLabel("?");
+		labelHelper.setFont(new Font("Tahoma", Font.BOLD, 14));
+		labelHelper.setBounds(408, 0, 16, 25);
+		labelSelectPension.add(labelHelper);
+		labelHelper.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				Helper Helper = new Helper();
+				Helper.setVisible(true);
+			}
+			
+		});
+		
 	}
 }

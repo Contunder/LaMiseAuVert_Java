@@ -9,6 +9,8 @@ public class Proprietaire {
 	private String Adresse;
 	private String Telephone;
 	private String Email;
+	private String NomAnimal;
+	private String Libelle;
 	
 	public Proprietaire() {
 		
@@ -60,6 +62,22 @@ public class Proprietaire {
 
 	public void setEmail(String email) {
 		Email = email;
+	}
+
+	public String getNomAnimal() {
+		return NomAnimal;
+	}
+
+	public void setNomAnimal(String nomAnimal) {
+		NomAnimal = nomAnimal;
+	}
+
+	public String getLibelle() {
+		return Libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		Libelle = libelle;
 	}
 
 	

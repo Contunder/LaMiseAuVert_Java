@@ -13,5 +13,7 @@ public class AnimalDAO {
 		this.userName = paramUserName;
 		this.password = paramPassword;
 	}
+	
+	
 
 }

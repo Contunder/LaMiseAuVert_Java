@@ -3,6 +3,8 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.ResultSet;
 
 import Modele.Proprietaire;
@@ -26,7 +28,7 @@ public class ProprietaireDAO {
 			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
 			
 			if (paramEmail != null) {
-				String requete = "CALL getUtilisateur('" + paramNom + "' , '" + paramPrenom + "' , '" + paramAdresse + "' ,"
+				String requete = "CALL addProprietaire('" + paramNom + "' , '" + paramPrenom + "' , '" + paramAdresse + "' ,"
 						+ " '" + paramTelephone + "' , '" + paramEmail + "' )";
 				Statement stmt = (Statement) conn.createStatement();
 				stmt.executeQuery(requete);
@@ -35,7 +37,7 @@ public class ProprietaireDAO {
 			}
 		} catch(Exception sqle) {
 			sqle.printStackTrace();
-			System.out.println("Erreur");
+			System.out.println("Erreur newProprietaire");
 			System.exit(0);
 		}
 	}
@@ -71,6 +73,40 @@ public class ProprietaireDAO {
 		}
 		return null;
 	}
+	
+	public List<Proprietaire> getSearch(String paramKey) {
+		try {
+			Connection conn = (Connection) DriverManager.getConnection(url + dbName , userName, password);
+			
+				String requete = "CALL getSearch('" + paramKey + "')";
+				Statement stmt = (Statement) conn.createStatement();
+				ResultSet ResultSet = stmt.executeQuery(requete);
+			
+				
+				List<Proprietaire> clientInfo = new ArrayList<Proprietaire>();
+				while (ResultSet.next()) {
+					Proprietaire client = new Proprietaire();
+					client.setNom("Nom : " + ResultSet.getString("Nom"));
+					client.setPrenom("Prenom : " +ResultSet.getString("Prenom"));
+					client.setAdresse("Adresse : " +ResultSet.getString("Adresse"));
+					client.setTelephone("Telephone : " +ResultSet.getString("Telephone"));
+					client.setEmail("Email : " +ResultSet.getString("Email"));
+					client.setNomAnimal("Animal : " +ResultSet.getString("NomAnimal"));
+					client.setLibelle("Espece : " +ResultSet.getString("Libelle"));
+					clientInfo.add(client);
+				}
+				 return clientInfo;
+			
+			
+		} catch(Exception sqle) {
+			sqle.printStackTrace();
+			System.out.println("Erreur");
+			System.exit(0);
+		}
+		return null;
+		
+	}
+
 	
 
 

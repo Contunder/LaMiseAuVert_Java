@@ -35,7 +35,7 @@ public class UtilisateurDAO {
 			
 		} catch(Exception sqle) {
 			sqle.printStackTrace();
-			System.out.println("Erreur");
+			System.out.println("Erreur newUtilisateur");
 			System.exit(0);
 		}
 	}

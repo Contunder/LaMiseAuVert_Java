@@ -1,6 +1,5 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +44,7 @@ public class AddCompte extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddCompte frame = new AddCompte();
+					AddCompte frame = new AddCompte(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -172,11 +171,15 @@ public class AddCompte extends JFrame {
 				char[] passChar = fieldPass.getPassword();
 				String Pass = new String(passChar);
 				String hashed_password = Crypt.encryptThisString(Pass);
-				
-				proprietaireDAO.newProprietaire(Nom, Prenom, Adresse, Telephone, Email);
 				Proprietaire proprietaire = proprietaireDAO.getProprietaireByEmail(Email);
-				utilisateurDAO.newUtilisateur(proprietaire.getId(), hashed_password, Role);
-				
+				if (proprietaire.getNom() == null) {
+					proprietaireDAO.newProprietaire(Nom, Prenom, Adresse, Telephone, Email);
+					proprietaire = proprietaireDAO.getProprietaireByEmail(Email);
+					utilisateurDAO.newUtilisateur(proprietaire.getId(), hashed_password, Role);
+					labelCreateCompte.setText("Utilisateur Cree");
+				} else {
+					labelCreateCompte.setText("Le mail existe déjà");
+				}
 			}
 			
 		});
