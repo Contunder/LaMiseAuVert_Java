@@ -58,6 +58,9 @@ public class Pension extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setVisible(true);
+		setTitle("La Mise Au Vert - Compte Pension");
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -122,7 +125,7 @@ public class Pension extends JFrame {
 		btnClient.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Client Client = new Client();
+				InfosClient Client = new InfosClient();
 				Client.setVisible(true);
 			}
 			

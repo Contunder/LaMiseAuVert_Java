@@ -30,7 +30,6 @@ public class Connect extends JFrame {
 	private JPanel contentPane;
 	private JTextField fieldEmail;
 	private JPasswordField passwordField;
-	private static Connect frame;
 
 	/**
 	 * Launch the application.
@@ -39,7 +38,7 @@ public class Connect extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new Connect();
+					Connect frame = new Connect();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,6 +59,9 @@ public class Connect extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 214);
+		setVisible(true);
+		setTitle("La Mise Au Vert - Connexion");
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -114,14 +116,14 @@ public class Connect extends JFrame {
 					if(utilisateur.getPassword() != null) {
 						String Role = new String(utilisateur.getRole());
 						if (Role.equals(verifUtilAdmin)){
-							frame.setVisible(false);
+							setVisible(false);
 							Admin Admin = new Admin(utilisateur, proprietaire);
 							Admin.setVisible(true);
 						}else if (Role.equals(verifUtilUser)) {
 							labelError.setText("Erreur : Vous ne pouvez pas vous connecter avec ce compte !");
 							labelError.setVisible(true);
 						}else {
-							frame.setVisible(false);
+							setVisible(false);
 							Pension Pension = new Pension(utilisateur, proprietaire);
 							Pension.setVisible(true);
 						}

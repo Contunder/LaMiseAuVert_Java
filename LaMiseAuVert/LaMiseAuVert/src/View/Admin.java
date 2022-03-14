@@ -60,6 +60,9 @@ public class Admin extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setVisible(true);
+		setTitle("La Mise Au Vert - Compte Administrateur");
+		
 		labelSelectPension = new JPanel();
 		labelSelectPension.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(labelSelectPension);

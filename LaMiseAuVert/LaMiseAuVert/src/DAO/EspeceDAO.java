@@ -2,7 +2,7 @@ package DAO;
 
 public class EspeceDAO {
 	
-	private String url;
+	/*private String url;
 	private String dbName;
 	private String userName;
 	private String password;
@@ -12,6 +12,6 @@ public class EspeceDAO {
 		this.dbName = paramDBName;
 		this.userName = paramUserName;
 		this.password = paramPassword;
-	}
+	}*/
 
 }

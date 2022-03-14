@@ -56,6 +56,9 @@ public class CreatePension extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 465, 320);
+		setVisible(true);
+		setTitle("La Mise Au Vert - Cree une Pension");
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -152,7 +155,7 @@ public class CreatePension extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				setVisible(false);
 			}
 			
 		});

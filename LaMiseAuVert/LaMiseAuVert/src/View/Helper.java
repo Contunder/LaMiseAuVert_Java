@@ -20,7 +20,6 @@ public class Helper extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private static Helper frame;
 
 	/**
 	 * Launch the application.
@@ -29,7 +28,7 @@ public class Helper extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new Helper();
+					Helper frame = new Helper();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +42,10 @@ public class Helper extends JFrame {
 	 */
 	public Helper() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 276);
+		setBounds(100, 100, 535, 285);
+		setVisible(true);
+		setTitle("La Mise Au Vert - Aide");
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,45 +89,45 @@ public class Helper extends JFrame {
 		
 		JLabel labelHelpEditPension = new JLabel("Tout les champs doivent être remplie sauf l'image");
 		labelHelpEditPension.setVerticalAlignment(SwingConstants.TOP);
-		labelHelpEditPension.setBounds(148, 36, 276, 14);
+		labelHelpEditPension.setBounds(148, 36, 361, 14);
 		contentPane.add(labelHelpEditPension);
 		
 		JLabel labelHelpEditPension2 = new JLabel("si vous ne souhaitez pas la changer.");
 		labelHelpEditPension2.setVerticalAlignment(SwingConstants.TOP);
-		labelHelpEditPension2.setBounds(148, 49, 276, 14);
+		labelHelpEditPension2.setBounds(148, 49, 361, 14);
 		contentPane.add(labelHelpEditPension2);
 		
 		JLabel labelHelpEditPrix = new JLabel("Tout les champs doivent être remplie.");
-		labelHelpEditPrix.setBounds(148, 74, 276, 14);
+		labelHelpEditPrix.setBounds(148, 74, 361, 14);
 		contentPane.add(labelHelpEditPrix);
 		
 		JLabel labelHelpCreePension = new JLabel("Tout les champs doivent être remplie sauf l'image");
-		labelHelpCreePension.setBounds(148, 99, 276, 14);
+		labelHelpCreePension.setBounds(148, 99, 361, 14);
 		contentPane.add(labelHelpCreePension);
 		
 		JLabel labelHelpCreePrix = new JLabel("Vous devez d'abord cree une pension puis la selectionner");
-		labelHelpCreePrix.setBounds(148, 124, 276, 14);
+		labelHelpCreePrix.setBounds(148, 124, 361, 14);
 		contentPane.add(labelHelpCreePrix);
 		
 		JLabel labelHelpCreeCompte = new JLabel("Vous pouver modifier les roles (USER pour un client)");
-		labelHelpCreeCompte.setBounds(148, 149, 276, 14);
+		labelHelpCreeCompte.setBounds(148, 149, 361, 14);
 		contentPane.add(labelHelpCreeCompte);
 		
 		JLabel labelHelpInfoClient = new JLabel("Vous pouvez chercher un client avec son nom");
-		labelHelpInfoClient.setBounds(148, 174, 276, 14);
+		labelHelpInfoClient.setBounds(148, 174, 361, 14);
 		contentPane.add(labelHelpInfoClient);
 		
 		JLabel labelHelpInfoClient2 = new JLabel("ou son prenom");
-		labelHelpInfoClient2.setBounds(148, 186, 276, 14);
+		labelHelpInfoClient2.setBounds(148, 186, 361, 14);
 		contentPane.add(labelHelpInfoClient2);
 		
 		JButton btnClose = new JButton("Fermer");
-		btnClose.setBounds(335, 211, 89, 23);
+		btnClose.setBounds(392, 211, 89, 23);
 		contentPane.add(btnClose);
 		btnClose.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
+				setVisible(false);
 			}
 			
 		});

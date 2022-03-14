@@ -69,6 +69,9 @@ public class AddCompte extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 341);
+		setVisible(true);
+		setTitle("La Mise Au Vert - Cree un Compte");
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -190,7 +193,7 @@ public class AddCompte extends JFrame {
 		btnAnnul.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(1);
+				setVisible(false);
 			}
 			
 		});

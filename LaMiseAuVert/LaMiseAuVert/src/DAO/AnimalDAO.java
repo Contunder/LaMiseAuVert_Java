@@ -2,7 +2,7 @@ package DAO;
 
 public class AnimalDAO {
 	
-	private String url;
+	/*private String url;
 	private String dbName;
 	private String userName;
 	private String password;
@@ -12,7 +12,7 @@ public class AnimalDAO {
 		this.dbName = paramDBName;
 		this.userName = paramUserName;
 		this.password = paramPassword;
-	}
+	}*/
 	
 	
 

@@ -59,6 +59,9 @@ public class EditPrix extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setVisible(true);
+		setTitle("La Mise Au Vert - Modifier un Prix");
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -128,6 +131,14 @@ public class EditPrix extends JFrame {
 		JButton btnAnnule = new JButton("Annuler");
 		btnAnnule.setBounds(170, 181, 117, 29);
 		contentPane.add(btnAnnule);
+		btnAnnule.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+			
+		});
 	}
 
 }
