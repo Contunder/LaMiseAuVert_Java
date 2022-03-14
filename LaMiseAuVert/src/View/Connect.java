@@ -1,12 +1,12 @@
 package View;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.tools.Tool;
 
 import Controller.Crypt;
 import Controller.DBConnect;
@@ -63,7 +63,7 @@ public class Connect extends JFrame {
 		setBounds(100, 100, 450, 214);
 		setVisible(true);
 		setTitle("La Mise Au Vert - Connexion");
-		java.net.URL iconURL = getClass().getResource("/images/icon.png");
+		URL iconURL = getClass().getResource("/images/icon.png");
 		ImageIcon icon = new ImageIcon(iconURL);
 		setIconImage(icon.getImage());
 		
