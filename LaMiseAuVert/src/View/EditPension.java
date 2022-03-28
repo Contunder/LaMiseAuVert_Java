@@ -53,6 +53,8 @@ public class EditPension extends JFrame {
 		String userName = DBConnect.getUserName();
 		String password = DBConnect.getPassword();
 		
+		PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 465, 320);
 		setVisible(true);
@@ -142,7 +144,6 @@ public class EditPension extends JFrame {
 				String paramTelephone = fieldTel.getText();
 				String paramVille = pension.getVille();
 				
-				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
 				String retour = pensionDAO.editPensionByVille(paramDescription, paramAdresse, paramResponsable, paramTelephone, paramVille);
 				labelPen.setText(retour);
 			}

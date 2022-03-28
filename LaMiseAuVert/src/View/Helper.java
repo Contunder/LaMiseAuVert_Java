@@ -91,7 +91,7 @@ public class Helper extends JFrame {
 		labelInfoClient.setBounds(10, 174, 77, 14);
 		contentPane.add(labelInfoClient);
 		
-		JLabel labelHelpEditPension = new JLabel("Tout les champs doivent �tre remplie sauf l'image");
+		JLabel labelHelpEditPension = new JLabel("Tout les champs doivent etre remplie sauf l'image");
 		labelHelpEditPension.setVerticalAlignment(SwingConstants.TOP);
 		labelHelpEditPension.setBounds(148, 36, 361, 14);
 		contentPane.add(labelHelpEditPension);
@@ -101,11 +101,11 @@ public class Helper extends JFrame {
 		labelHelpEditPension2.setBounds(148, 49, 361, 14);
 		contentPane.add(labelHelpEditPension2);
 		
-		JLabel labelHelpEditPrix = new JLabel("Tout les champs doivent �tre remplie.");
+		JLabel labelHelpEditPrix = new JLabel("Tout les champs doivent etre remplie.");
 		labelHelpEditPrix.setBounds(148, 74, 361, 14);
 		contentPane.add(labelHelpEditPrix);
 		
-		JLabel labelHelpCreePension = new JLabel("Tout les champs doivent �tre remplie sauf l'image");
+		JLabel labelHelpCreePension = new JLabel("Tout les champs doivent etre remplie sauf l'image");
 		labelHelpCreePension.setBounds(148, 99, 361, 14);
 		contentPane.add(labelHelpCreePension);
 		

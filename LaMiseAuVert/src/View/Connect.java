@@ -59,6 +59,11 @@ public class Connect extends JFrame {
 		String userName = DBConnect.getUserName();
 		String password = DBConnect.getPassword();
 		
+		ProprietaireDAO proprietaireDAO = new ProprietaireDAO(url, dbName, userName, password);
+		UtilisateurDAO utilisateurDAO = new UtilisateurDAO(url, dbName, userName, password);
+
+
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 214);
 		setVisible(true);
@@ -110,21 +115,18 @@ public class Connect extends JFrame {
 				char[] passChar = passwordField.getPassword();
 				String pass = new String(passChar);
 				String email = fieldEmail.getText();
-				ProprietaireDAO proprietaireDAO = new ProprietaireDAO(url, dbName, userName, password);
 				Proprietaire proprietaire = proprietaireDAO.getProprietaireByEmail(email);
-				if(proprietaire.getEmail() != null) {
+				if(proprietaire.getEmail().equals(email)) {
 					String hashed_password = Crypt.encryptThisString(pass);
-					UtilisateurDAO utilisateurDAO = new UtilisateurDAO(url, dbName, userName, password);
 					Utilisateur utilisateur = utilisateurDAO.getUtilisateurByPassword(hashed_password, proprietaire.getId());
 					String verifUtilAdmin =  new String("ADMIN");
 					String verifUtilUser = new String("USER");
-					if(utilisateur.getPassword() != null) {
-						String Role = new String(utilisateur.getRole());
-						if (Role.equals(verifUtilAdmin)){
+					if(utilisateur.getPassword().equals(hashed_password)) {
+						if (utilisateur.getRole().equals(verifUtilAdmin)){
 							setVisible(false);
 							Admin Admin = new Admin(utilisateur, proprietaire);
 							Admin.setVisible(true);
-						}else if (Role.equals(verifUtilUser)) {
+						}else if (utilisateur.getRole().equals(verifUtilUser)) {
 							labelError.setText("Erreur : Vous ne pouvez pas vous connecter avec ce compte !");
 							labelError.setVisible(true);
 						}else {

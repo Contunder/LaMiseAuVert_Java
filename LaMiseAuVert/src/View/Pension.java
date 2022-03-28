@@ -57,6 +57,9 @@ public class Pension extends JFrame {
 		String userName = DBConnect.getUserName();
 		String password = DBConnect.getPassword();
 		
+		PrixDAO prixDAO = new PrixDAO(url, dbName, userName, password);
+		PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setVisible(true);
@@ -80,7 +83,6 @@ public class Pension extends JFrame {
 		btnEditPen.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
 				Modele.Pension pension = pensionDAO.getPensionByVille(utilisateur.getRole());
 				EditPension EditPension = new EditPension(pension);
 				EditPension.setVisible(true);
@@ -94,8 +96,6 @@ public class Pension extends JFrame {
 		btnEditPrix.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PrixDAO prixDAO = new PrixDAO(url, dbName, userName, password);
-				PensionDAO pensionDAO = new PensionDAO(url, dbName, userName, password);
 				
 				Modele.Pension pension = pensionDAO.getPensionByVille(utilisateur.getRole());
 				Modele.Prix prixHotel = prixDAO.getPrixByVilleAndLibelle(utilisateur.getRole(), "Hotel Canin");
