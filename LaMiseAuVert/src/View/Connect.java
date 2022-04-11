@@ -116,12 +116,12 @@ public class Connect extends JFrame {
 				String pass = new String(passChar);
 				String email = fieldEmail.getText();
 				Proprietaire proprietaire = proprietaireDAO.getProprietaireByEmail(email);
-				if(proprietaire.getEmail().equals(email)) {
+				if(proprietaire.getEmail()!= null && proprietaire.getEmail().equals(email)) {
 					String hashed_password = Crypt.encryptThisString(pass);
 					Utilisateur utilisateur = utilisateurDAO.getUtilisateurByPassword(hashed_password, proprietaire.getId());
 					String verifUtilAdmin =  new String("ADMIN");
 					String verifUtilUser = new String("USER");
-					if(utilisateur.getPassword().equals(hashed_password)) {
+					if(utilisateur.getPassword()!=null && utilisateur.getPassword().equals(hashed_password)) {
 						if (utilisateur.getRole().equals(verifUtilAdmin)){
 							setVisible(false);
 							Admin Admin = new Admin(utilisateur, proprietaire);

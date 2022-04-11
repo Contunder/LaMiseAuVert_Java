@@ -2,10 +2,10 @@ package Controller;
 
 public class DBConnect {
 	
-	static String url="jdbc:mysql://127.0.0.1:8889/";
-	static String dbName = "lamiseauvert";
-	static String userName = "valentin";
-	static String password = "kilabilon";
+	static String url="jdbc:mysql://172.29.106.49:3306/";
+	static String dbName = "LaMiseAuVert";
+	static String userName = "prof1234";
+	static String password = "prof_1234!";
 	
 	public static String getUrl() {
 		return url;
